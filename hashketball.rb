@@ -41,17 +41,12 @@ end
 
 def num_points_scored(player_name)
   game_hash.each do |side, team_attributes|
-    if team_attributes.is_a? Hash
-    team_attributes.each do |team_info, attributes|
-      if attributes.is_a? Hash
-      attributes.each do |name, player_info|
-        if name.to_s.split("_").join(" ") == player_name
-           return player_info[:points]
+    team_attributes[:players].each do |name, player_info|
+      binding.pry
+          if name.to_s.split("_").join(" ") == player_name
+            return player_info[:points]
+          end
         end
-      end
-      end
-    end
-    end
   end
 end
 
